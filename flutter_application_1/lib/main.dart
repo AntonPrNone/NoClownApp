@@ -9,7 +9,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.purple),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+      ),
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   final _sizeTextBlack = const TextStyle(fontSize: 20.0, color: Colors.black);
   final _sizeTextWhite = const TextStyle(fontSize: 20.0, color: Colors.white);

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names
 
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 final List<String> users = ["Tom", "Bob", "Sam", "Mike"];
 final List<String> companies = ["Google", "Microsoft", "Apple", "JetBrains"];
@@ -17,7 +16,11 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     Widget calendarPage(BuildContext context) {
-      return ListView();
+      return CalendarDatePicker(
+          initialDate: DateTime.now(),
+          firstDate: DateTime(2000),
+          lastDate: DateTime(2050, 12, 31),
+          onDateChanged: (DateTime value) {});
     }
 
     Widget dealPage(BuildContext context) {
@@ -41,6 +44,11 @@ class _SecondScreenState extends State<SecondScreen> {
     return Scaffold(
       body: list.elementAt(index),
       appBar: AppBar(title: Text("To-Do List")),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
