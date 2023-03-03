@@ -2,8 +2,20 @@
 
 import 'package:flutter/material.dart';
 
-final List<String> users = ["Tom", "Bob", "Sam", "Mike"];
-final List<String> companies = ["Google", "Microsoft", "Apple", "JetBrains"];
+final List<String> users = [
+  "Сходить в магазин",
+  "Flutter",
+  "Поиграть НЕ в доту",
+  "Сходить за посылкой"
+];
+final List<String> companies = [
+  "Купить молоко, хлеб, сыр",
+  "Прописать flutter upgrade",
+  "Выиграть в ИЧ",
+  "Сходить за посылкой на почту"
+];
+final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
+var items = <String>[];
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -12,6 +24,7 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   int index = 0;
+  TextEditingController editingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +55,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   ),
                   trailing: Icon(Icons.phone),
                   subtitle: Text(
-                    "Works in ${companies[index]}",
+                    companies[index],
                   )),
             );
           });
@@ -53,8 +66,31 @@ class _SecondScreenState extends State<SecondScreen> {
       calendarPage(context),
     ];
     return Scaffold(
-      body: list.elementAt(index),
-      appBar: AppBar(title: Text("To-Do List")),
+      body: Container(
+          child: Column(children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: TextField(
+            onChanged: (value) {
+              filterSearchResults(value);
+            },
+            controller: editingController,
+            decoration: InputDecoration(
+                labelText: "Search",
+                hintText: "Search",
+                prefixIcon: Icon(Icons.search),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)))),
+          ),
+        ),
+        Expanded(
+          child: list.elementAt(index),
+        )
+      ])),
+      appBar: AppBar(
+          title: Text(
+        "To-Do List",
+      )),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
@@ -81,5 +117,24 @@ class _SecondScreenState extends State<SecondScreen> {
         selectedItemColor: Colors.red,
       ),
     );
+  }
+}
+
+void filterSearchResults(String query) {
+  List<String> dummySearchList = <String>[];
+  dummySearchList.addAll(users);
+  if (query.isNotEmpty) {
+    List<String> dummyListData = <String>[];
+    dummySearchList.forEach((item) {
+      if (item.contains(query)) {
+        dummyListData.add(item);
+      }
+    });
+    items.clear();
+    items.addAll(users);
+    return;
+  } else {
+    items.clear();
+    items.addAll(users);
   }
 }
