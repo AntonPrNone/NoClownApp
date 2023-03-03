@@ -61,9 +61,10 @@ class HomeScreen extends StatelessWidget {
               width: 325.0,
               child: TextFormField(
                 onSaved: (val) => _email = val,
-                validator: (val) => val == null || !val.contains("@")
-                    ? 'Not a valid email.'
-                    : null,
+                validator: (val) =>
+                    val == null || !(val.contains("@") && val.contains("."))
+                        ? 'Not a valid email.'
+                        : null,
                 decoration: InputDecoration(labelText: "Email"),
                 keyboardType: TextInputType.emailAddress,
                 style: _sizeTextBlack,
@@ -87,7 +88,9 @@ class HomeScreen extends StatelessWidget {
                 height: 50.0,
                 minWidth: 150.0,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/second');
+                  if (formKey.currentState!.validate()) {
+                    Navigator.pushNamed(context, '/second');
+                  }
                 },
                 child: Text(
                   "LOGIN",

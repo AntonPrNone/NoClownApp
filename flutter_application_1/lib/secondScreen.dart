@@ -29,11 +29,22 @@ class _SecondScreenState extends State<SecondScreen> {
           itemCount: users.length,
           separatorBuilder: (BuildContext context, int index) => Divider(),
           itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-                title: Text(users[index], style: TextStyle(fontSize: 22)),
-                leading: Icon(Icons.face),
-                trailing: Icon(Icons.phone),
-                subtitle: Text("Works in ${companies[index]}"));
+            return Container(
+              decoration: BoxDecoration(
+                  border: Border.all(width: 2),
+                  color: Color.fromARGB(255, 201, 201, 201),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: ListTile(
+                  title: Text(users[index], style: TextStyle(fontSize: 22)),
+                  leading: Text(
+                    (index + 1).toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  trailing: Icon(Icons.phone),
+                  subtitle: Text(
+                    "Works in ${companies[index]}",
+                  )),
+            );
           });
     }
 
@@ -49,6 +60,7 @@ class _SecondScreenState extends State<SecondScreen> {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      drawer: Drawer(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
