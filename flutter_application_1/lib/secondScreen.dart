@@ -25,6 +25,8 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   int index = 0;
   TextEditingController editingController = TextEditingController();
+  String? DialogTitle;
+  String? DialogSubtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     (index + 1).toString(),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(Icons.phone),
+                  trailing: Icon(Icons.delete_forever),
                   subtitle: Text(
                     companies[index],
                   )),
@@ -92,8 +94,54 @@ class _SecondScreenState extends State<SecondScreen> {
         "To-Do List",
       )),
       floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              title: Text("Введите данные"),
+              content: Container(
+                  child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: 325.0,
+                    child: TextFormField(
+                      onSaved: (value) => DialogTitle = value,
+                      decoration: InputDecoration(labelText: "Title"),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: 325.0,
+                    child: TextFormField(
+                      onSaved: (value) => DialogSubtitle = value,
+                      decoration: InputDecoration(labelText: "Subtitle"),
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 25.0),
+                    child: MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25.0)),
+                      color: Theme.of(context).colorScheme.secondary,
+                      height: 50.0,
+                      minWidth: 150.0,
+                      onPressed: () {
+                        AddItem(DialogTitle, DialogSubtitle);
+                      },
+                      child: Text(
+                        "LOGIN",
+                      ),
+                    ),
+                  )
+                ],
+              )),
+            ),
+          );
+        },
         child: Icon(Icons.add),
-        onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       drawer: Drawer(),
@@ -136,5 +184,19 @@ void filterSearchResults(String query) {
   } else {
     items.clear();
     items.addAll(users);
+  }
+}
+
+void AddItem(String? T, String? ST) {
+  if (T == null) {
+    users.add(" ");
+  } else {
+    users.add(T);
+  }
+
+  if (ST == null) {
+    companies.add(" ");
+  } else {
+    companies.add(ST);
   }
 }
