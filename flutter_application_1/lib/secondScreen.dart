@@ -49,7 +49,7 @@ class _SecondScreenState extends State<SecondScreen> {
           child: Column(children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: TextField( 
+          child: TextField(
             decoration: InputDecoration(
                 labelText: "Search",
                 hintText: "Search",
@@ -72,50 +72,54 @@ class _SecondScreenState extends State<SecondScreen> {
             context: context,
             builder: (_) => AlertDialog(
                 title: Text("Введите данные"),
-                content: Center(
-                  child: Form(
-                    key: formKeyDialog,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          width: 325.0,
-                          child: TextFormField(
-                            onSaved: (value) => DialogTitle = value,
-                            decoration: InputDecoration(labelText: "Title"),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          width: 325.0,
-                          child: TextFormField(
-                            onSaved: (value) => DialogSubtitle = value,
-                            decoration: InputDecoration(labelText: "Subtitle"),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 25.0),
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(25.0)),
-                            color: Theme.of(context).colorScheme.secondary,
-                            height: 50.0,
-                            minWidth: 150.0,
-                            onPressed: () {
-                              formKeyDialog.currentState?.save();
-                              AddItem(DialogTitle, DialogSubtitle);
-                              Navigator.pushNamed(context, '/second');
-                            },
-                            child: Text(
-                              "Add",
-                              style: TextStyle(color: Colors.white),
+                content: Container(
+                  height: 225,
+                  child: Center(
+                    child: Form(
+                      key: formKeyDialog,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            width: 325.0,
+                            child: TextFormField(
+                              onSaved: (value) => DialogTitle = value,
+                              decoration: InputDecoration(labelText: "Title"),
+                              keyboardType: TextInputType.emailAddress,
                             ),
                           ),
-                        )
-                      ],
+                          Container(
+                            padding: EdgeInsets.all(10),
+                            width: 325.0,
+                            child: TextFormField(
+                              onSaved: (value) => DialogSubtitle = value,
+                              decoration:
+                                  InputDecoration(labelText: "Subtitle"),
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 25.0),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25.0)),
+                              color: Theme.of(context).colorScheme.secondary,
+                              height: 50.0,
+                              minWidth: 150.0,
+                              onPressed: () {
+                                formKeyDialog.currentState?.save();
+                                AddItem(DialogTitle, DialogSubtitle);
+                                Navigator.pushNamed(context, '/second');
+                              },
+                              child: Text(
+                                "Add",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )),

@@ -25,7 +25,7 @@ class _DealPageState extends State<DealPage> {
                 color: Color.fromARGB(255, 201, 201, 201),
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: ListTile(
-                title: Text(users[index], style: TextStyle(fontSize: 22)),
+                title: Text(users[index], style: TextStyle(fontSize: 20)),
                 leading: Text(
                   (index + 1).toString(),
                   style: TextStyle(fontWeight: FontWeight.bold),
