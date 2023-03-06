@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, file_names
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -67,7 +67,7 @@ class _DealPageState extends State<DealPage> {
           ),
         ),
         Expanded(
-          flex: 8,
+          flex: 6,
           child: SizedBox(
               child: ListView.separated(
                   padding: const EdgeInsets.all(8),

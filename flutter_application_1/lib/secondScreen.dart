@@ -1,16 +1,16 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/WidgetCalendarPage.dart';
 import 'package:flutter_application_1/WidgetDealPage.dart';
 
-final List<String> users = [
+List<String> users = [
   "Сходить в магазин",
   "Flutter",
   "Поиграть НЕ в доту",
   "Сходить за посылкой"
 ];
-final List<String> companies = [
+List<String> companies = [
   "Купить молоко, хлеб, сыр",
   "Прописать flutter upgrade",
   "Выиграть в ИЧ",
@@ -24,8 +24,8 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   int index = 0;
-  String? DialogTitle;
-  String? DialogSubtitle;
+  String? dialogTitle;
+  String? dialogSubtitle;
 
   final formKeyDialog = GlobalKey<FormState>();
 
@@ -45,8 +45,7 @@ class _SecondScreenState extends State<SecondScreen> {
     ];
 
     return Scaffold(
-      body: Container(
-          child: Column(children: <Widget>[
+      body: Column(children: <Widget>[
         Padding(
           padding: EdgeInsets.all(8.0),
           child: TextField(
@@ -61,7 +60,7 @@ class _SecondScreenState extends State<SecondScreen> {
         Expanded(
           child: list.elementAt(index),
         )
-      ])),
+      ]),
       appBar: AppBar(
           title: Text(
         "To-Do List",
@@ -72,7 +71,7 @@ class _SecondScreenState extends State<SecondScreen> {
             context: context,
             builder: (_) => AlertDialog(
                 title: Text("Введите данные"),
-                content: Container(
+                content: SizedBox(
                   height: 225,
                   child: Center(
                     child: Form(
@@ -84,7 +83,7 @@ class _SecondScreenState extends State<SecondScreen> {
                             padding: EdgeInsets.all(10),
                             width: 325.0,
                             child: TextFormField(
-                              onSaved: (value) => DialogTitle = value,
+                              onSaved: (value) => dialogTitle = value,
                               decoration: InputDecoration(labelText: "Title"),
                               keyboardType: TextInputType.emailAddress,
                             ),
@@ -93,7 +92,7 @@ class _SecondScreenState extends State<SecondScreen> {
                             padding: EdgeInsets.all(10),
                             width: 325.0,
                             child: TextFormField(
-                              onSaved: (value) => DialogSubtitle = value,
+                              onSaved: (value) => dialogSubtitle = value,
                               decoration:
                                   InputDecoration(labelText: "Subtitle"),
                               keyboardType: TextInputType.emailAddress,
@@ -109,7 +108,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               minWidth: 150.0,
                               onPressed: () {
                                 formKeyDialog.currentState?.save();
-                                AddItem(DialogTitle, DialogSubtitle);
+                                AddItem(dialogTitle, dialogSubtitle);
                                 Navigator.pushNamed(context, '/second');
                               },
                               child: Text(

@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'NoClownApp',
+                  'ClownApp',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
