@@ -10,9 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        iconTheme: IconThemeData(color: Colors.white),
         primarySwatch: Colors.purple,
       ),
-      initialRoute: '/',
+      initialRoute: '/second',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
         '/second': (BuildContext context) => SecondScreen()

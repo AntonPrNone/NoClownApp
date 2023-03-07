@@ -16,6 +16,19 @@ List<String> companies = [
   "Выиграть в ИЧ",
   "Сходить за посылкой на почту"
 ];
+List<Widget> icons = [
+  Icon(Icons.abc),
+  Icon(Icons.ac_unit),
+  Icon(Icons.access_alarm),
+  Icon(Icons.accessibility),
+  Icon(Icons.account_box),
+  Icon(Icons.adb),
+  Icon(Icons.add_a_photo),
+  Icon(Icons.admin_panel_settings),
+  Icon(Icons.air),
+  Icon(Icons.album_sharp),
+  Icon(Icons.hail)
+];
 
 class SecondScreen extends StatefulWidget {
   @override

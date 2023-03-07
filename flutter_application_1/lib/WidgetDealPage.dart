@@ -44,7 +44,7 @@ class _DealPageState extends State<DealPage> {
           child: SizedBox(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: users.length,
+                itemCount: icons.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8),
@@ -56,18 +56,17 @@ class _DealPageState extends State<DealPage> {
                                 BorderRadius.all(Radius.circular(20))),
                         padding: EdgeInsets.all(8),
                         child: Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Center(
-                              child: Text(users[index],
-                                  style: TextStyle(
-                                      fontSize: 22, color: Colors.white)),
+                            padding: EdgeInsets.zero,
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: icons[index],
                             ))),
                   );
                 }),
           ),
         ),
         Expanded(
-          flex: 6,
+          flex: 8,
           child: SizedBox(
               child: ListView.separated(
                   padding: const EdgeInsets.all(8),
