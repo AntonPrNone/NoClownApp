@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (BuildContext context) => HomeScreen(),
         '/second': (BuildContext context) => SecondScreen()
-      },
+      }
     );
   }
 }

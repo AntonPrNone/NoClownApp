@@ -93,7 +93,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(10), 
                             width: 325.0,
                             child: TextFormField(
                               onSaved: (value) => dialogTitle = value,
